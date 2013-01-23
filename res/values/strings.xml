@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">How Much To Pay</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="menu_settings">Settings</string>
+    <string name="investment_hint">0.00</string>
+    <string name="investment_text">Investment Value</string>
+    <string name="fee_text">Fee to pay to investor (%)</string>
+    <string name="fee_hint">0.00</string>
+    <string name="calculate_text">Calculate</string>
+    <string name="result_text">0.00</string>
+    <color name="def_bg_color">#F5F5F5</color>
+
+</resources>

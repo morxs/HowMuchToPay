@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="normal_text_value">10dp</dimen>
+    <dimen name="normal_margin">7dp</dimen>
+    <dimen name="space_between">5dp</dimen>
+</resources>

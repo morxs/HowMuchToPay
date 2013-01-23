@@ -1,0 +1,75 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/def_bg_color"
+    tools:context=".MainActivity" >
+
+    <TextView
+        android:id="@+id/txtInvestmentValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="@dimen/normal_margin"
+        android:layout_marginTop="@dimen/normal_margin"
+        android:text="@string/investment_text" />
+
+    <EditText
+        android:id="@+id/numInvestmentValue"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/txtInvestmentValue"
+        android:layout_below="@+id/txtInvestmentValue"
+        android:layout_marginRight="@dimen/normal_margin"
+        android:ems="10"
+        android:inputType="numberDecimal"
+        android:text="@string/investment_hint" >
+
+        <requestFocus />
+    </EditText>
+
+    <TextView
+        android:id="@+id/txtFeePercent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/numInvestmentValue"
+        android:layout_below="@+id/numInvestmentValue"
+        android:layout_marginTop="@dimen/space_between"
+        android:text="@string/fee_text" />
+
+    <EditText
+        android:id="@+id/numFeeValue"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/txtFeePercent"
+        android:layout_below="@+id/txtFeePercent"
+        android:layout_marginRight="@dimen/normal_margin"
+        android:ems="10"
+        android:inputType="numberDecimal"
+        android:text="@string/fee_hint" />
+
+    <Button
+        android:id="@+id/btnCalculate"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/numFeeValue"
+        android:layout_below="@+id/numFeeValue"
+        android:layout_marginRight="@dimen/normal_margin"
+        android:layout_marginTop="@dimen/space_between"
+        android:onClick="CalculateOnClick"
+        android:text="@string/calculate_text" />
+
+    <TextView
+        android:id="@+id/txtResult"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/btnCalculate"
+        android:layout_below="@+id/btnCalculate"
+        android:layout_marginRight="@dimen/normal_margin"
+        android:layout_marginTop="@dimen/space_between"
+        android:text="@string/result_text"
+        android:textAlignment="center"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+</RelativeLayout>
