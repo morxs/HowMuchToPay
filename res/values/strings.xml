@@ -11,5 +11,7 @@
     <string name="calculate_text">Calculate</string>
     <string name="result_text">0.00</string>
     <color name="def_bg_color">#F5F5F5</color>
+	<string name="amount_warn">Enter a valid decimal number in Amount</string>
+	<string name="fee_warn">Enter a valid decimal number in Fee</string>
 
 </resources>

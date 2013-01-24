@@ -33,11 +33,11 @@ public class MainActivity extends Activity {
 		switch (view.getId()) {
 		case R.id.btnCalculate:
 			if(numInvestmentValue.getText().length() == 0) {
-				Toast.makeText(this, "Please enter a valid number in Amount", Toast.LENGTH_LONG).show();
+				Toast.makeText(this, R.string.amount_warn, Toast.LENGTH_LONG).show();
 				return;
 			}
 			if(numFeeValue.getText().length() == 0) {
-				Toast.makeText(this, "Please enter a valid number in Fee", Toast.LENGTH_LONG).show();
+				Toast.makeText(this, R.string.fee_warn, Toast.LENGTH_LONG).show();
 				return;
 			}
 			
