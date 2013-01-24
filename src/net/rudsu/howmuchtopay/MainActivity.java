@@ -15,7 +15,6 @@ public class MainActivity extends Activity {
 	private EditText numFeeValue;
 	private TextView resultValue;
 	
-	// TODO: add interactive to Setting when click, maybe jump to other screen
 	// TODO: add advertisement in the bottom part of the screen
 	// TODO: maybe add landscape orientation UI
 	// TODO: add widget (is this appropriate for this app?)
@@ -67,6 +66,18 @@ public class MainActivity extends Activity {
 		case R.id.menu_settings:
 			Intent intent = new Intent(this, SettingsActivity.class);
 			startActivity(intent);
+			break;
+		
+		case R.id.menu_share :
+			Intent sendIntent = new Intent();
+			sendIntent.setAction(Intent.ACTION_SEND);
+			String sendMessage = "You need to pay " + String.valueOf(resultValue.getText()) + 
+					" for amount of " + numInvestmentValue.getText() +
+					" with fee of " + numFeeValue.getText() + "%";
+			sendIntent.putExtra(Intent.EXTRA_TEXT, sendMessage);
+			sendIntent.setType("text/plain");
+			startActivity(Intent.createChooser(sendIntent, getResources().getText(R.string.share_to)));
+			break;
 		}
 		return super.onOptionsItemSelected(item);
 	}
