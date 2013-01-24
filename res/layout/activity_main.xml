@@ -2,17 +2,27 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/def_bg_color"
     tools:context=".MainActivity" >
+	
+    <TextView
+        android:id="@+id/txtResult"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_margin="@dimen/normal_margin"
+        android:gravity="center"
+        android:text="@string/result_text"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/txtInvestmentValue"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginLeft="@dimen/normal_margin"
-        android:layout_marginTop="@dimen/normal_margin"
+        android:layout_alignLeft="@+id/txtResult"
+        android:layout_below="@+id/txtResult"
+        android:layout_marginTop="@dimen/space_between"
         android:text="@string/investment_text" />
 
     <EditText
@@ -24,9 +34,8 @@
         android:layout_marginRight="@dimen/normal_margin"
         android:ems="10"
         android:inputType="numberDecimal"
-        android:text="@string/investment_hint" >
-
-        <requestFocus />
+        android:text="@string/investment_hint">
+    	<requestFocus />
     </EditText>
 
     <TextView
@@ -47,7 +56,8 @@
         android:layout_marginRight="@dimen/normal_margin"
         android:ems="10"
         android:inputType="numberDecimal"
-        android:text="@string/fee_hint" />
+        android:text="@string/fee_hint" >
+    </EditText>
 
     <Button
         android:id="@+id/btnCalculate"
@@ -59,17 +69,5 @@
         android:layout_marginTop="@dimen/space_between"
         android:onClick="CalculateOnClick"
         android:text="@string/calculate_text" />
-
-    <TextView
-        android:id="@+id/txtResult"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/btnCalculate"
-        android:layout_below="@+id/btnCalculate"
-        android:layout_marginRight="@dimen/normal_margin"
-        android:layout_marginTop="@dimen/space_between"
-        android:text="@string/result_text"
-        android:textAlignment="center"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
 
 </RelativeLayout>
