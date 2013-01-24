@@ -2,7 +2,9 @@ package net.rudsu.howmuchtopay;
 
 import android.os.Bundle;
 import android.app.Activity;
+import android.content.Intent;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -12,6 +14,11 @@ public class MainActivity extends Activity {
 	private EditText numInvestmentValue;
 	private EditText numFeeValue;
 	private TextView resultValue;
+	
+	// TODO: add interactive to Setting when click, maybe jump to other screen
+	// TODO: add advertisement in the bottom part of the screen
+	// TODO: maybe add landscape orientation UI
+	// TODO: add widget (is this appropriate for this app?)
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -52,6 +59,16 @@ public class MainActivity extends Activity {
 	
 	private float calculateFee(float amount, float fee) {
 		return (amount * 100)/(100-fee);
+	}
+
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		switch(item.getItemId()) {
+		case R.id.menu_settings:
+			Intent intent = new Intent(this, SettingsActivity.class);
+			startActivity(intent);
+		}
+		return super.onOptionsItemSelected(item);
 	}
 
 }
