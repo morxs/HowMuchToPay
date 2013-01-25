@@ -16,7 +16,7 @@ public class MainActivity extends Activity {
 	private TextView resultValue;
 	
 	// TODO: add advertisement in the bottom part of the screen
-	// TODO: maybe add landscape orientation UI
+	// TODO: maybe add landscape orientation UI (currently not broken in ldpi screen)
 	// TODO: add widget (is this appropriate for this app?)
 	
 	@Override
