@@ -3,28 +3,40 @@ package net.rudsu.howmuchtopay;
 import android.os.Build;
 import android.os.Bundle;
 import android.annotation.SuppressLint;
-import android.app.Activity;
-import android.view.Menu;
-import android.view.MenuItem;
+/**
+ * disable due to sherlock ab
+ * import android.app.Activity;
+ * import android.view.Menu;
+ * import android.view.MenuItem;
+ */
 import android.support.v4.app.NavUtils;
 
+//import com.actionbarsherlock.app.ActionBar;
+import com.actionbarsherlock.view.Menu;
+import com.actionbarsherlock.view.MenuItem;
+//import com.actionbarsherlock.view.MenuInflater;
+import com.actionbarsherlock.app.SherlockActivity;
+
 @SuppressLint("NewApi")
-public class SettingsActivity extends Activity {
+public class SettingsActivity extends SherlockActivity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_settings);
-		// Show the Up button in the action bar.
-		if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
-			getActionBar().setDisplayHomeAsUpEnabled(true);
-		}
+		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+//		// Show the Up button in the action bar.
+//		if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
+//			getActionBar().setDisplayHomeAsUpEnabled(true);
+//		}
 	}
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.activity_settings, menu);
+		getSupportMenuInflater().inflate(R.menu.activity_settings, menu);
+		// disable due to change activity -> sherlock activity
+		//getMenuInflater().inflate(R.menu.activity_settings, menu);
 		return true;
 	}
 

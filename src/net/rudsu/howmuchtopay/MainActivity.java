@@ -1,16 +1,26 @@
 package net.rudsu.howmuchtopay;
 
 import android.os.Bundle;
-import android.app.Activity;
+//import android.app.Activity;
 import android.content.Intent;
-import android.view.Menu;
-import android.view.MenuItem;
+/*
+ * disable due to import from ABSherlock
+ * import android.view.Menu;
+ * import android.view.MenuItem;
+ * 
+ */
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class MainActivity extends Activity {
+//import com.actionbarsherlock.app.ActionBar;
+import com.actionbarsherlock.view.Menu;
+import com.actionbarsherlock.view.MenuItem;
+//import com.actionbarsherlock.view.MenuInflater;
+import com.actionbarsherlock.app.SherlockActivity;
+
+public class MainActivity extends SherlockActivity {
 	private EditText numInvestmentValue;
 	private EditText numFeeValue;
 	private TextView resultValue;
@@ -18,6 +28,8 @@ public class MainActivity extends Activity {
 	// TODO: add advertisement in the bottom part of the screen
 	// TODO: maybe add landscape orientation UI (currently not broken in ldpi screen)
 	// TODO: add widget (is this appropriate for this app?)
+	// TODO: apply SherlockActionBar
+	// TODO: apply HoloEverywhere (if applicable)
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -27,11 +39,13 @@ public class MainActivity extends Activity {
 		numFeeValue = (EditText) findViewById(R.id.numFeeValue);
 		resultValue = (TextView) findViewById(R.id.txtResult);
 	}
-
+	
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.activity_main, menu);
+		getSupportMenuInflater().inflate(R.menu.activity_main, menu);
+		// disable due to change activity -> sherlock activity
+		//getMenuInflater().inflate(R.menu.activity_main, menu);
 		return true;
 	}
 	
