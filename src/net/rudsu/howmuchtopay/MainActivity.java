@@ -79,6 +79,7 @@ public class MainActivity extends SherlockActivity {
 		switch(item.getItemId()) {
 		case R.id.menu_settings:
 			Intent intent = new Intent(this, SettingsActivity.class);
+			intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP | Intent.FLAG_ACTIVITY_CLEAR_TOP);
 			startActivity(intent);
 			break;
 		
