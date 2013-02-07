@@ -3,6 +3,7 @@ package net.rudsu.howmuchtopay;
 import android.os.Bundle;
 //import android.app.Activity;
 import android.content.Intent;
+import android.util.Log;
 /*
  * disable due to import from ABSherlock
  * import android.view.Menu;
@@ -25,6 +26,12 @@ public class MainActivity extends SherlockActivity {
 	private EditText numFeeValue;
 	private TextView resultValue;
 	
+	static final String KEY_AMOUNT = "numAmount";
+	static final String KEY_FEE = "numFee";
+	static final String KEY_RESULT = "numResult";
+	
+	static final String CLASS_TAG = "MainActivity";
+	
 	// TODO: add advertisement in the bottom part of the screen
 	// TODO: maybe add landscape orientation UI (currently not broken in ldpi screen)
 	// TODO: add widget (is this appropriate for this app?)
@@ -38,6 +45,8 @@ public class MainActivity extends SherlockActivity {
 		numInvestmentValue = (EditText) findViewById(R.id.numInvestmentValue);
 		numFeeValue = (EditText) findViewById(R.id.numFeeValue);
 		resultValue = (TextView) findViewById(R.id.txtResult);
+		
+		restoreState(savedInstanceState);
 	}
 	
 	@Override
@@ -97,4 +106,31 @@ public class MainActivity extends SherlockActivity {
 		return super.onOptionsItemSelected(item);
 	}
 
+	@Override
+	protected void onSaveInstanceState(Bundle outState) {
+		super.onSaveInstanceState(outState);
+		saveState(outState);
+	}
+
+	private void saveState(Bundle state) {
+		state.putString(KEY_AMOUNT, numInvestmentValue.getText().toString());
+		state.putString(KEY_FEE, numFeeValue.getText().toString());
+		state.putString(KEY_RESULT, resultValue.getText().toString());
+	}
+
+//	@Override
+//	protected void onRestoreInstanceState(Bundle savedInstanceState) {
+//		super.onRestoreInstanceState(savedInstanceState);
+//		restoreState(savedInstanceState);
+//	}
+
+	private void restoreState(Bundle state) {
+		if (state != null) {
+			numInvestmentValue.setText(state.getString(KEY_AMOUNT));
+			numFeeValue.setText(state.getString(KEY_FEE));
+			resultValue.setText(state.getString(KEY_RESULT));
+			
+			Log.i(CLASS_TAG,"restoring state...");
+		}
+	}
 }
