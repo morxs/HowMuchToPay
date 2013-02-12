@@ -138,4 +138,10 @@ public class MainActivity extends SherlockActivity {
 			Log.i(CLASS_TAG,"restoring state...");
 		}
 	}
+
+	@Override
+	protected void onRestoreInstanceState(Bundle savedInstanceState) {
+		super.onRestoreInstanceState(savedInstanceState);
+		restoreState(savedInstanceState);
+	}
 }
