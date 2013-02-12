@@ -32,11 +32,11 @@ public class MainActivity extends SherlockActivity {
 	
 	static final String CLASS_TAG = "MainActivity";
 	
-	// TODO: add advertisement in the bottom part of the screen
+	// TODO: add advertisement in the bottom part of the screen (not applicable due to adv need dev account which need US$25 to register
 	// TODO: maybe add landscape orientation UI (currently not broken in ldpi screen)
 	// TODO: add widget (is this appropriate for this app?)
-	// TODO: apply SherlockActionBar
 	// TODO: apply HoloEverywhere (if applicable)
+	// TODO: add about activity
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -95,9 +95,14 @@ public class MainActivity extends SherlockActivity {
 		case R.id.menu_share :
 			Intent sendIntent = new Intent();
 			sendIntent.setAction(Intent.ACTION_SEND);
-			String sendMessage = "You need to pay " + String.valueOf(resultValue.getText()) + 
-					" for amount of " + numInvestmentValue.getText() +
-					" with fee of " + numFeeValue.getText() + "%";
+			String sendMessage = getResources().getString(R.string.share_text);
+//			String sendMessage = "You need to pay " + String.valueOf(resultValue.getText()) + 
+//					" for amount of " + numInvestmentValue.getText() +
+//					" with fee of " + numFeeValue.getText() + "%";
+			sendMessage = sendMessage
+					.replace("$$1", String.valueOf(resultValue.getText()))
+					.replace("$$2", numInvestmentValue.getText())
+					.replace("$$3", numFeeValue.getText());
 			sendIntent.putExtra(Intent.EXTRA_TEXT, sendMessage);
 			sendIntent.setType("text/plain");
 			startActivity(Intent.createChooser(sendIntent, getResources().getText(R.string.share_to)));

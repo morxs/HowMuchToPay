@@ -17,5 +17,6 @@
     <string name="menu_share">Share</string>
     <string name="menu_back">Back</string>
     <string name="share_to">Share to..</string>
+    <string name="share_text">You need to pay $$1 for amount of $$2 with fee of $$3%</string>
 
 </resources>
