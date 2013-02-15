@@ -1,8 +1,13 @@
 package net.rudsu.howmuchtopay;
 
+import java.io.InputStream;
+
 import android.os.Bundle;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 //import android.app.Activity;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.util.Log;
 /*
  * disable due to import from ABSherlock
@@ -86,26 +91,16 @@ public class MainActivity extends SherlockActivity {
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch(item.getItemId()) {
-		case R.id.menu_settings:
-			Intent intent = new Intent(this, SettingsActivity.class);
-			intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP | Intent.FLAG_ACTIVITY_CLEAR_TOP);
-			startActivity(intent);
+		case R.id.submenu_settings:
+			showSettingsActivity();
 			break;
 		
-		case R.id.menu_share :
-			Intent sendIntent = new Intent();
-			sendIntent.setAction(Intent.ACTION_SEND);
-			String sendMessage = getResources().getString(R.string.share_text);
-//			String sendMessage = "You need to pay " + String.valueOf(resultValue.getText()) + 
-//					" for amount of " + numInvestmentValue.getText() +
-//					" with fee of " + numFeeValue.getText() + "%";
-			sendMessage = sendMessage
-					.replace("$$1", String.valueOf(resultValue.getText()))
-					.replace("$$2", numInvestmentValue.getText())
-					.replace("$$3", numFeeValue.getText());
-			sendIntent.putExtra(Intent.EXTRA_TEXT, sendMessage);
-			sendIntent.setType("text/plain");
-			startActivity(Intent.createChooser(sendIntent, getResources().getText(R.string.share_to)));
+		case R.id.menu_share:
+			showShareActivity();
+			break;
+			
+		case R.id.submenu_license:
+			showLicenseActivity();
 			break;
 		}
 		return super.onOptionsItemSelected(item);
@@ -143,5 +138,62 @@ public class MainActivity extends SherlockActivity {
 	protected void onRestoreInstanceState(Bundle savedInstanceState) {
 		super.onRestoreInstanceState(savedInstanceState);
 		restoreState(savedInstanceState);
+	}
+	
+	private void showSettingsActivity() {
+		Intent intent = new Intent(this, SettingsActivity.class);
+		intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+		startActivity(intent);
+	}
+	
+	private void showShareActivity() {
+		Intent sendIntent = new Intent();
+		sendIntent.setAction(Intent.ACTION_SEND);
+		String sendMessage = getResources().getString(R.string.share_text);
+//		String sendMessage = "You need to pay " + String.valueOf(resultValue.getText()) + 
+//				" for amount of " + numInvestmentValue.getText() +
+//				" with fee of " + numFeeValue.getText() + "%";
+		sendMessage = sendMessage
+				.replace("$$1", String.valueOf(resultValue.getText()))
+				.replace("$$2", numInvestmentValue.getText())
+				.replace("$$3", numFeeValue.getText());
+		sendIntent.putExtra(Intent.EXTRA_TEXT, sendMessage);
+		sendIntent.setType("text/plain");
+		startActivity(Intent.createChooser(sendIntent, getResources().getText(R.string.share_to)));
+	}
+	
+	private void showLicenseActivity() {
+		String message;
+		
+		AlertDialog.Builder builder = new AlertDialog.Builder(this);
+		
+		// start read text message
+		try {
+	        Resources res = getResources();
+	        InputStream in_s = res.openRawResource(R.raw.readme);
+
+	        byte[] b = new byte[in_s.available()];
+	        in_s.read(b);
+	        message = new String(b);
+	        //txtHelp.setText(new String(b));
+	    } catch (Exception e) {
+	        // e.printStackTrace();
+	        //txtHelp.setText("Error: can't show help.");
+	    	message = "error showing readme";
+	    }
+		
+		builder.setMessage(message)
+			.setTitle("License");
+		builder.setPositiveButton(R.string.ok_text, new DialogInterface.OnClickListener() {
+			
+			@Override
+			public void onClick(DialogInterface dialog, int which) {
+				dialog.dismiss();
+			}
+		});
+		
+		AlertDialog dialog = builder.create();
+		
+		dialog.show();
 	}
 }

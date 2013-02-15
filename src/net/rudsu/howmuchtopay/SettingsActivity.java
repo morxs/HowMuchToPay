@@ -1,16 +1,7 @@
 package net.rudsu.howmuchtopay;
 
-import android.os.Build;
 import android.os.Bundle;
 import android.annotation.SuppressLint;
-/**
- * disable due to sherlock ab
- * import android.app.Activity;
- * import android.view.Menu;
- * import android.view.MenuItem;
- */
-import android.support.v4.app.NavUtils;
-
 //import com.actionbarsherlock.app.ActionBar;
 import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuItem;
