@@ -10,9 +10,6 @@
         android:showAsAction="always" 
         android:icon="@drawable/abs__ic_menu_moreoverflow_holo_dark" >
         <menu>
-            <item android:id="@+id/submenu_settings" 
-                android:title="@string/menu_settings"
-                android:orderInCategory="201" />
             <item android:id="@+id/submenu_license" 
                 android:title="@string/menu_license"
                 android:orderInCategory="202"/>

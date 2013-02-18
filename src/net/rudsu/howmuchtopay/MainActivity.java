@@ -5,6 +5,7 @@ import java.io.InputStream;
 import android.os.Bundle;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.SharedPreferences;
 //import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Resources;
@@ -31,11 +32,14 @@ public class MainActivity extends SherlockActivity {
 	private EditText numFeeValue;
 	private TextView resultValue;
 	
-	static final String KEY_AMOUNT = "numAmount";
-	static final String KEY_FEE = "numFee";
-	static final String KEY_RESULT = "numResult";
+	private static final String KEY_AMOUNT = "numAmount";
+	private static final String KEY_FEE = "numFee";
+	private static final String KEY_RESULT = "numResult";
 	
-	static final String CLASS_TAG = "MainActivity";
+	private static final String CLASS_TAG = "MainActivity";
+	
+//	private static final String PREFS_NAME = "net.rudsu.howmuchtopay";
+//	private static final String PREFS_DARK_THEME = "darkTheme";
 	
 	// TODO: add advertisement in the bottom part of the screen (not applicable due to adv need dev account which need US$25 to register
 	// TODO: maybe add landscape orientation UI (currently not broken in ldpi screen)
@@ -46,7 +50,13 @@ public class MainActivity extends SherlockActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		
+		// Read preference
+		//restorePref();
+		
 		setContentView(R.layout.activity_main);
+		
+		// States
 		numInvestmentValue = (EditText) findViewById(R.id.numInvestmentValue);
 		numFeeValue = (EditText) findViewById(R.id.numFeeValue);
 		resultValue = (TextView) findViewById(R.id.txtResult);
@@ -91,10 +101,10 @@ public class MainActivity extends SherlockActivity {
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch(item.getItemId()) {
-		case R.id.submenu_settings:
-			showSettingsActivity();
-			break;
-		
+//		case R.id.submenu_settings:
+//			showSettingsActivity();
+//			break;
+//		
 		case R.id.menu_share:
 			showShareActivity();
 			break;
@@ -140,11 +150,11 @@ public class MainActivity extends SherlockActivity {
 		restoreState(savedInstanceState);
 	}
 	
-	private void showSettingsActivity() {
-		Intent intent = new Intent(this, SettingsActivity.class);
-		intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP | Intent.FLAG_ACTIVITY_CLEAR_TOP);
-		startActivity(intent);
-	}
+//	private void showSettingsActivity() {
+//		Intent intent = new Intent(this, SettingsActivity.class);
+//		intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+//		startActivity(intent);
+//	}
 	
 	private void showShareActivity() {
 		Intent sendIntent = new Intent();
@@ -196,4 +206,18 @@ public class MainActivity extends SherlockActivity {
 		
 		dialog.show();
 	}
+	
+//	private void restorePref() {
+//		SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
+//		boolean darkTheme = false;
+//		
+//		darkTheme = settings.getBoolean("darkTheme", false);
+//		
+//		if (!darkTheme) {
+//			setTheme(R.style.Sherlock___Theme_Light);
+//		}
+//		else {
+//			setTheme(R.style.Sherlock___Theme_DarkActionBar);
+//		}
+//	}
 }
